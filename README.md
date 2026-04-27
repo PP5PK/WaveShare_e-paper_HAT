@@ -189,9 +189,7 @@ epaper-apps/
 
 | Board | Tested |
 |---|---|
-| Raspberry Pi Zero | ✅ |
-| Raspberry Pi Zero W | ✅ |
-| Raspberry Pi Zero 2W | ✅ |
+| Raspberry Pi 0 (any)| ✅ |
 | Raspberry Pi 3B+ | ✅ |
 | Raspberry Pi 4 | ✅ |
 | Raspberry Pi 5 | ✅ |
