@@ -1,6 +1,6 @@
 # 📟 E-Paper HAT+ Applications for Raspberry Pi
 
-A growing collection of Python applications for the **WaveShare 2.13" E-Paper HAT+** on Raspberry Pi. Each app is self-contained, uses partial refresh for smooth updates, and is designed to run as a systemd service.
+A growing collection of Python applications for the **WaveShare 2.13" E-Paper HAT+** on Raspberry Pi (both [HAT](https://www.waveshare.com/2.13inch-e-Paper-HAT.htm) and [HAT+](https://www.waveshare.com/2.13inch-e-Paper-HAT-Plus.htm)). Each app is self-contained, uses partial refresh for smooth updates, and is designed to run as a systemd service.
 
 > Maintained by **PP5KX** — Mafra, Santa Catarina, Brazil 🇧🇷
 
