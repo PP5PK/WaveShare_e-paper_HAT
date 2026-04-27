@@ -6,7 +6,7 @@ A growing collection of Python applications for the **WaveShare 2.13" E-Paper HA
 
 ---
 
-## Hardware
+## Hardware - [2.13inch E-Paper HAT+](https://www.waveshare.com/wiki/2.13inch_e-Paper_HAT+)
 
 | Item | Details |
 |---|---|
@@ -31,16 +31,16 @@ A real-time system dashboard showing clock, date, and live hardware metrics.
 **Display layout:**
 ```
 ┌──────────────────────────────────────────┐
-│ RasPi0W-105         Sat, 26 Apr 2026    │
+│ RasPi0W-105                                      Sat, 26 Apr 2026    │
 ├──────────────────────────────────────────┤
-│                                          │
-│              22:14:37                    │
-│                                          │
+│                                                                      │
+│                             22:14:37                                 │
+│                                                                      │
 ├─────────────────┬────────────────────────┤
-│ CPU [████░░] 72%│ Temp 54°C             │
-│ RAM [███░░░] 45%│ Disk 23%              │
+│ CPU [██████░] 72%      │        Temp 54°C                       │
+│ RAM [████░░░░] 45%      │        Disk 23%                        │
 ├─────────────────┴────────────────────────┤
-│ 192.168.1.105                   PP5KX   │
+│ 192.168.1.105                                                PP5KX   │
 └──────────────────────────────────────────┘
 ```
 
@@ -71,16 +71,16 @@ A live dashboard for [xlxd](https://github.com/LX3JL/xlxd) D-Star/YSF/DMR reflec
 **Display layout:**
 ```
 ┌──────────────────────────────────────────┐
-│ XLXBRA            Sat 26/04  22:14:37   │
+│ XLXBRA                                         Sat 26/04  22:14:37   │
 ├──────────────────────────────────────────┤
-│ PP5KX-A   [D]  DCS   13:02:03       2s  │
-│ PY2ABC-A  [D]  DCS   12:58:11      14s  │
-│ PY3XYZ-B  [B]  YSF   12:44:59       5s  │
-│ PP1DEF-A  [A]  DMR   12:30:22       8s  │
+│ PP5KX-A   [D]  DCS   13:02:03       2s                               │
+│ PY2ABC-A  [D]  DCS   12:58:11      14s                               │
+│ PY3XYZ-B  [B]  YSF   12:44:59       5s                               │
+│ PP1DEF-A  [A]  DMR   12:30:22       8s                               │
 ├──────────────────────────────────────────┤
-│ PP5KX-A  PP5KX-B               2 online │
+│ PP5KX-A  PP5KX-B                                            2 online │
 ├──────────────────────────────────────────┤
-│ 192.168.1.105                   PP5KX   │
+│ 192.168.1.105                                                PP5KX   │
 └──────────────────────────────────────────┘
 ```
 
@@ -114,7 +114,7 @@ sudo python3 e-paper_monitor.py --once     # single refresh and exit
 ### 1. Clone this repository
 
 ```bash
-git clone https://github.com/pp5kx/epaper-apps.git /usr/local/bin/epaper-apps
+git clone https://github.com/pp5kx/Waveshare_e-paper_apps.git /usr/local/bin/Waveshare_e-paper_apps
 cd /usr/local/bin/epaper-apps
 ```
 
@@ -187,10 +187,12 @@ epaper-apps/
 
 | Board | Tested |
 |---|---|
+| Raspberry Pi Zero | ✅ |
 | Raspberry Pi Zero W | ✅ |
-| Raspberry Pi Zero 2 W | ✅ |
+| Raspberry Pi Zero 2W | ✅ |
 | Raspberry Pi 3B+ | ✅ |
 | Raspberry Pi 4 | ✅ |
+| Raspberry Pi 5 | ✅ |
 
 ---
 
