@@ -69,20 +69,8 @@ sudo python3 station_monitor.py --once     # single refresh and exit
 A live dashboard for [XLX](https://github.com/PP5PK/XLX_Installer) D-Star/YSF/DMR reflectors. Parses the xlxd log file in real time and displays last heard stations and connected clients.
 
 **Display layout:**
-```
-┌──────────────────────────────────────────┐
-│ XLXBRA                                         Sat 26/04  22:14:37   │
-├──────────────────────────────────────────┤
-│ PP5KX-A   [D]  DCS   13:02:03       2s                               │
-│ PY2ABC-A  [D]  DCS   12:58:11      14s                               │
-│ PY3XYZ-B  [B]  YSF   12:44:59       5s                               │
-│ PP1DEF-A  [A]  DMR   12:30:22       8s                               │
-├──────────────────────────────────────────┤
-│ PP5KX-A  PP5KX-B                                            2 online │
-├──────────────────────────────────────────┤
-│ 192.168.1.105                                                PP5KX   │
-└──────────────────────────────────────────┘
-```
+
+![XLXBRA](https://cloud.dvbr.net/images/e-paper_XLXBRA.jpg)
 
 **Features:**
 - Last 4 transmissions with callsign, module, protocol and TX duration
