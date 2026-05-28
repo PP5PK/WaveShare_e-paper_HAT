@@ -10,7 +10,7 @@ Exibe em tempo real informações do refletor XLX:
 
 Display  : WaveShare 2.13" e-Paper HAT+ (epd2in13_V4)  250 × 122 px
 Log XLX  : /var/log/xlx.log
-Autor    : Daniel K. - PP5PK
+Autor    : PP5PK
 
 Arquitetura de threads
 ──────────────────────
@@ -55,8 +55,8 @@ from PIL import Image, ImageDraw, ImageFont
 # =============================================================================
 
 CALLSIGN        = "PP5PK"             # Indicativo do operador
-REFLECTOR_NAME  = "XLXBRA"            # Nome exibido no cabeçalho
-XLX_LOG         = "/var/log/xlx.log"  # Caminho do log do xlxd
+REFLECTOR_NAME  = "XLXBRA"           # Nome exibido no cabeçalho
+XLX_LOG         = "/var/log/xlx.log" # Caminho do log do xlxd
 LOG_TAIL_LINES  = 1000                # Linhas do final do log a analisar
 MAX_LASTHEARD   = 4                   # Entradas de last heard exibidas
 
@@ -90,13 +90,11 @@ MESES = ['', 'Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun',
 W, H         = 250, 122
 WHITE, BLACK = 255, 0
 
-Y_SEP1   = 15    # separador após cabeçalho
-Y_LH0    = 18    # primeira linha last heard
-LH_STEP  = 13    # espaçamento entre linhas
-Y_SEP2   = 71    # separador após last heard  (18 + 4×13 = 70 → +1)
-Y_ONLINE = 74    # linha de clientes online
-Y_SEP3   = 87    # separador antes do rodapé
-Y_FOOT   = 91    # rodapé
+Y_SEP1    = 15    # separador após cabeçalho
+Y_LH0     = 18    # primeira linha last heard
+LH_STEP   = 13    # espaçamento entre linhas last heard
+Y_SEP2    = 71    # separador após last heard
+Y_CLI_TOP = 74    # topo da área de clientes (vai até H)
 
 # Colunas da tabela last heard (x em pixels)
 COL_CS    = 2    # callsign
@@ -212,7 +210,7 @@ RE_START = re.compile(r'Started xlxd\.service')
 
 
 def _fmt_cs(cs: str, sf) -> str:
-    """Formata callsign: ('PP5PK', 'A') → 'PP5KX-A' ; ('ECHO', None) → 'ECHO'."""
+    """Formata callsign: ('PP5PK', 'A') → 'PP5PK-A' ; ('ECHO', None) → 'ECHO'."""
     cs = cs.strip()
     return f"{cs}-{sf}" if sf and sf.strip() else cs
 
@@ -470,26 +468,42 @@ class XLXMonitor:
 
         db.line([(0, Y_SEP2), (W - 1, Y_SEP2)], fill=fg)
 
-        # ── CLIENTES ONLINE ───────────────────────────────────────────────────
-        n   = len(cli)
-        if n == 0:
-            online_str = "Sem clientes online"
+        # ── CLIENTES ONLINE — inline, quebra de linha automática ──────────────
+        # Empacota callsigns um após o outro; quando não cabe na linha atual
+        # desce para a próxima. Usa todo o espaço até o fundo da tela.
+        CLI_LINE_H = 11   # altura de linha a 10pt
+        CLI_GAP    = 6    # espaço horizontal entre callsigns
+
+        cs_sorted = sorted(cli.keys()) if cli else []
+
+        if not cs_sorted:
+            db.text((2, Y_CLI_TOP + CLI_LINE_H),
+                    "No clients connected", font=self.fonte_sm, fill=fg)
         else:
-            # Lista de callsigns separados por espaço
-            cs_list    = '  '.join(sorted(cli.keys())[:5])
-            online_str = f"{cs_list}"
-        db.text((COL_CS, Y_ONLINE), online_str[:36], font=self.fonte_sm, fill=fg)
-        # Contagem alinhada à direita
-        cnt_str  = f"{n} online"
-        larg_cnt = largura_texto(db, cnt_str, self.fonte_sm)
-        db.text((W - larg_cnt - 2, Y_ONLINE), cnt_str, font=self.fonte_sm, fill=fg)
+            # Quebra em linhas por largura disponível
+            lines_cli: list[list[str]] = []
+            row: list[str] = []
+            row_w = 0
+            for cs in cs_sorted:
+                cs_w = largura_texto(db, cs, self.fonte_sm) + CLI_GAP
+                if row and row_w + cs_w > W - 4:
+                    lines_cli.append(row)
+                    row   = [cs]
+                    row_w = cs_w
+                else:
+                    row.append(cs)
+                    row_w += cs_w
+            if row:
+                lines_cli.append(row)
 
-        db.line([(0, Y_SEP3), (W - 1, Y_SEP3)], fill=fg)
-
-        # ── RODAPÉ ────────────────────────────────────────────────────────────
-        db.text((COL_CS, Y_FOOT), ip, font=self.fonte_sm, fill=fg)
-        larg_cs = largura_texto(db, CALLSIGN, self.fonte_sm)
-        db.text((W - larg_cs - 2, Y_FOOT), CALLSIGN, font=self.fonte_sm, fill=fg)
+            for li, line in enumerate(lines_cli):
+                y = Y_CLI_TOP + li * CLI_LINE_H
+                if y + CLI_LINE_H > H:   # não ultrapassa o display
+                    break
+                x = 2
+                for cs in line:
+                    db.text((x, y), cs, font=self.fonte_sm, fill=fg)
+                    x += largura_texto(db, cs, self.fonte_sm) + CLI_GAP
 
         return img
 
