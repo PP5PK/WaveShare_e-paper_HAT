@@ -2,7 +2,7 @@
 
 A growing collection of Python applications for the **WaveShare 2.13" E-Paper HAT+** on Raspberry Pi (both [HAT](https://www.waveshare.com/2.13inch-e-Paper-HAT.htm) and [HAT+](https://www.waveshare.com/2.13inch-e-Paper-HAT-Plus.htm)). Each app is self-contained, uses partial refresh for smooth updates, and is designed to run as a systemd service.
 
-> Maintained by **PP5KX** — Mafra, Santa Catarina, Brazil 🇧🇷
+> Maintained by **PP5PK** — Mafra, Santa Catarina, Brazil 🇧🇷
 
 ---
 
@@ -52,7 +52,7 @@ sudo python3 station_monitor.py --once     # single refresh and exit
 
 ---
 
-### 📡 XLX Reflector Dashboard — `e-paper_monitor.py`
+### 📡 XLX Reflector Dashboard — `xlx_monitor.py`
 
 A live dashboard for [XLX](https://github.com/PP5PK/XLX_Installer) D-Star/YSF/DMR reflectors. Parses the xlxd log file in real time and displays last heard stations and connected clients.
 
@@ -90,7 +90,7 @@ sudo python3 e-paper_monitor.py --once     # single refresh and exit
 ### 1. Clone this repository
 
 ```bash
-git clone https://github.com/pp5kx/Waveshare_e-paper_apps.git /usr/local/bin/Waveshare_e-paper_apps
+git clone https://github.com/pp5pk/Waveshare_e-paper_apps.git /usr/local/bin/Waveshare_e-paper_apps
 cd /usr/local/bin/Waveshare_e-paper_apps
 ```
 
@@ -192,7 +192,7 @@ MIT License — feel free to use, modify and share.
 
 ---
 
-*73 de PP5KX*
+*73 de PP5PK*
 
 ![73](https://cloud.dvbr.net/images/e-paper_static.jpg)
 
