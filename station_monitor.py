@@ -65,7 +65,7 @@ from PIL import Image, ImageDraw, ImageFont
 #  CONFIGURAÇÃO
 # =============================================================================
 
-CALLSIGN       = "PP5KX"   # Indicativo exibido no cabeçalho
+CALLSIGN       = "PP5PK"   # Indicativo exibido no cabeçalho
 DISK_PATH      = "/"       # Ponto de montagem monitorado
 
 STATS_INTERVAL  = 5         # Segundos entre coletas de CPU/RAM/Temp/Disco (via thread)
