@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-e-paper_monitor.py — Monitor XLX para e-Paper 2.13" B/W (HAT+)
+xlx_monitor.py — Monitor XLX para e-Paper 2.13" B/W (HAT+)
 ===============================================================
 Exibe em tempo real informações do refletor XLX:
   · Últimas 4 transmissões completas (Opening→Closing stream) com duração
@@ -10,7 +10,7 @@ Exibe em tempo real informações do refletor XLX:
 
 Display  : WaveShare 2.13" e-Paper HAT+ (epd2in13_V4)  250 × 122 px
 Log XLX  : /var/log/xlx.log
-Autor    : PP5KX
+Autor    : Daniel K. - PP5PK
 
 Arquitetura de threads
 ──────────────────────
@@ -25,9 +25,9 @@ Ciclos de refresh
 
 Eventos relevantes do log xlxd
 ───────────────────────────────
-  Conectando : "New client PP5KX   A at IP added with protocol DCS on module D"
-  Desconect. : "Client PP5KX   A at IP removed with protocol DCS on module D"
-  TX início  : "Opening stream on module D for client PP5KX   A with sid 58692"
+  Conectando : "New client PP5PK   A at IP added with protocol DCS on module D"
+  Desconect. : "Client PP5PK   A at IP removed with protocol DCS on module D"
+  TX início  : "Opening stream on module D for client PP5PK   A with sid 58692"
   TX fim     : "Closing stream of module D"
   Peer/interlink: protocol XLX → excluído da contagem de clientes de rádio
 
@@ -54,9 +54,9 @@ from PIL import Image, ImageDraw, ImageFont
 #  CONFIGURAÇÃO
 # =============================================================================
 
-CALLSIGN        = "PP5KX"             # Indicativo do operador
-REFLECTOR_NAME  = "XLXBRA"           # Nome exibido no cabeçalho
-XLX_LOG         = "/var/log/xlx.log" # Caminho do log do xlxd
+CALLSIGN        = "PP5PK"             # Indicativo do operador
+REFLECTOR_NAME  = "XLXBRA"            # Nome exibido no cabeçalho
+XLX_LOG         = "/var/log/xlx.log"  # Caminho do log do xlxd
 LOG_TAIL_LINES  = 1000                # Linhas do final do log a analisar
 MAX_LASTHEARD   = 4                   # Entradas de last heard exibidas
 
@@ -174,21 +174,21 @@ def formatar_duracao(seg: int) -> str:
 #  Formato das linhas relevantes:
 #
 #  Conectando (radio):
-#    "26 Apr, 12:11:28: New client PP5KX   A at 172.23.127.1 added with protocol DCS on module D"
+#    "26 Apr, 12:11:28: New client PP5PK   A at 172.23.127.1 added with protocol DCS on module D"
 #
 #  Desconectando (radio):
-#    "26 Apr, 12:58:45: Client PP5KX   A at 172.23.127.1 removed with protocol DCS on module D"
+#    "26 Apr, 12:58:45: Client PP5PK   A at 172.23.127.1 removed with protocol DCS on module D"
 #
 #  Peer/interlink (excluído da contagem):
 #    "26 Apr, 12:11:32: New client ECHO     at 127.0.0.1 added with protocol XLX on module E"
 #
 #  TX início:
-#    "26 Apr, 12:44:59: Opening stream on module D for client PP5KX   A with sid 58692"
+#    "26 Apr, 12:44:59: Opening stream on module D for client PP5PK   A with sid 58692"
 #
 #  TX fim:
 #    "26 Apr, 12:45:02: Closing stream of module D"
 #
-#  Nota: callsign e sufixo vêm separados por espaços: "PP5KX   A"
+#  Nota: callsign e sufixo vêm separados por espaços: "PP5PK   A"
 #        O sufixo é uma letra maiúscula opcional (A, B, C...) ou ausente (peers).
 #        O padrão usa [A-Z]? seguido de look-ahead para garantir que não
 #        captura palavras como "at" ou "with" como sufixo.
@@ -212,7 +212,7 @@ RE_START = re.compile(r'Started xlxd\.service')
 
 
 def _fmt_cs(cs: str, sf) -> str:
-    """Formata callsign: ('PP5KX', 'A') → 'PP5KX-A' ; ('ECHO', None) → 'ECHO'."""
+    """Formata callsign: ('PP5PK', 'A') → 'PP5KX-A' ; ('ECHO', None) → 'ECHO'."""
     cs = cs.strip()
     return f"{cs}-{sf}" if sf and sf.strip() else cs
 
