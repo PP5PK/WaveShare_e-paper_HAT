@@ -94,7 +94,7 @@ git clone https://github.com/pp5pk/Waveshare_e-paper_apps.git /usr/local/bin/Wav
 cd /usr/local/bin/Waveshare_e-paper_apps
 ```
 
-### 2. Install the WaveShare driver library
+### 2. Install the WaveShare driver library (* Optional)
 
 ```bash
 git clone https://github.com/waveshare/e-Paper.git
@@ -104,7 +104,7 @@ cp -r e-Paper/RaspberryPi_JetsonNano/python/lib/waveshare_epd ./waveshare_epd
 ### 3. Install Python dependencies
 
 ```bash
-pip install pillow psutil python3-lgpio
+sudo apt install python3-lgpio python3-psutil python3-pil python3-gpiozero
 ```
 
 ### 4. Enable SPI on your Raspberry Pi
