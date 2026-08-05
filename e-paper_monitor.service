@@ -1,18 +1,18 @@
 [Unit]
-Description=e-Paper System Monitor (WaveShare 2.13" HAT+)
+Description=e-Paper Dashboard (WaveShare 2.13" HAT+)
 After=network.target
 Wants=network.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/python3 /usr/local/bin/e-paper_monitor.py
-WorkingDirectory=/usr/local/bin
+ExecStart=/usr/bin/python3 /usr/local/bin/Waveshare_e-paper_apps/xlx_monitor.py
+WorkingDirectory=/usr/local/bin/Waveshare_e-paper_apps
 Restart=on-failure
 RestartSec=10
 User=root
 StandardOutput=journal
 StandardError=journal
-SyslogIdentifier=e-paper-monitor
+SyslogIdentifier=e-paper_monitor
 
 [Install]
 WantedBy=multi-user.target
