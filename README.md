@@ -104,7 +104,7 @@ cp -r e-Paper/RaspberryPi_JetsonNano/python/lib/waveshare_epd ./waveshare_epd
 ### 3. Install Python dependencies
 
 ```bash
-pip install pillow psutil
+pip install pillow psutil python3-lgpio
 ```
 
 ### 4. Enable SPI on your Raspberry Pi
