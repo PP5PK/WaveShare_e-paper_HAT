@@ -58,7 +58,7 @@ A live dashboard for [XLX](https://github.com/PP5PK/XLX_Installer) D-Star/YSF/DM
 
 **Display layout:**
 
-![XLXBRA](https://cloud.dvbr.net/images/e-paper_XLXBRA.jpg)
+![XLXBRA](https://cloud.dvbr.net/images/e-paper_XLXBRA_#2.jpg)
 
 **Features:**
 - Last heard stations with real operator callsign, gateway (+ `via <REFLECTOR>` when relayed from a linked reflector), module and time (right-aligned)
