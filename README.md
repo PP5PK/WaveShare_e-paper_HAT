@@ -198,11 +198,9 @@ Pull requests and suggestions are welcome.
 
 ## License
 
-MIT License — feel free to use, modify and share.
+Released under the **The Unlicense** License. See [`LICENSE`](LICENSE) for details.
 
 ---
 
 *73 de PP5PK*
-
-![73](https://cloud.dvbr.net/images/e-paper_static.jpg)
 
